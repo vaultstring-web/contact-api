@@ -1,4 +1,7 @@
 const { validateContactForm } = require('./validation');
+const { verifyRecaptcha } = require('./recaptcha');
+
+
 
 const errorHandler = (err, req, res, next) => {
   console.error(err.stack);
@@ -18,5 +21,7 @@ const notFoundHandler = (req, res) => {
 module.exports = {
   validateContactForm,
   errorHandler,
-  notFoundHandler
+  notFoundHandler,
+  validateContactForm,
+  verifyRecaptcha
 };
