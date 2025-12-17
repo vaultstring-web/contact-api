@@ -5,14 +5,6 @@ const contactController = {
     try {
       const formData = req.body;
       
-      console.log('Processing contact form submission:', {
-        name: formData.name,
-        email: formData.email,
-        category: formData.category,
-        timestamp: new Date().toISOString(),
-        ip: req.ip
-      });
-      
       // Send emails
       const emailResults = await emailService.sendContactEmail(formData);
       
@@ -43,10 +35,7 @@ const contactController = {
     res.json({
       status: 'healthy',
       timestamp: new Date().toISOString(),
-      service: 'Contact API',
-      features: {
-        recaptcha: true
-      }
+      service: 'Contact API'
     });
   }
 };

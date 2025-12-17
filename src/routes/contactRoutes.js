@@ -1,16 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const contactController = require('../controllers/contactController');
-const { validateContactForm } = require('../middleware/validation');
-const { verifyRecaptcha } = require('../middleware/recaptcha');
+const { validateContactForm } = require('../middleware');
 
+// Health check endpoint
 router.get('/health', contactController.healthCheck);
 
-
-router.post('/contact', 
-  validateContactForm,
-  verifyRecaptcha,
-  contactController.handleContactForm
-);
+// Contact form endpoint
+router.post('/contact', validateContactForm, contactController.handleContactForm);
 
 module.exports = router;
